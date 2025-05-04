@@ -1,0 +1,445 @@
+header{
+    background-color: white;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    box-shadow: 1px 1px 6px 2px #dbdbdb;
+}
+:root{
+    --yellow: #cfeb0b;
+}
+.container {
+    max-width: 1140px;
+    margin: auto;
+    padding: 0 10px;
+}
+.nav_up {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px solid #d8d8d8;
+}
+.nav_up img {
+    margin-left: 10px;
+    width: 130px;
+}
+.nav_up i{
+    font-size: 26px;
+    color: #222;
+    margin-right: 10px;
+}
+.fa-bars{
+    font-size: 20px !important;
+    margin-left: 15px;
+    display: none !important;
+}
+.nav_up a{
+    height: 29px; 
+}
+.nav_up h4,nav a{
+    font: 700 18px "Roboto";
+    color: #222;
+}
+nav {
+    display: flex;
+    padding: 13px 0;
+    justify-content: space-between;
+    align-items: center;
+}
+nav > div {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+nav a{
+    padding: 5px 8px;
+    border-radius: 15px ;
+}
+nav a:hover{
+    background-color: #ebebebd3;
+}
+nav button,.nav_up button{
+    cursor: pointer;
+    font: 400 16px arial;
+    border-radius: 20px;
+    padding: 8px 20px;
+    background-color: var(--yellow);
+    border: 1px solid #222;
+    transition: .5s;
+}
+.nav_up button{
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    display: none;
+}
+nav button:hover,.nav_up button:hover {
+    background-color: white;
+}
+.slider_box{
+    height:600px;
+    padding-top: 40px;
+    overflow: hidden;
+    position: relative;
+}
+.slider{
+    height: max-content;
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    transition: .5s;
+}
+.slider img{
+    width: 1260px;
+    object-fit:cover;
+}
+.slider img:first-child{
+    margin-left: 20px;
+}
+.slider_nav{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 50px 0;
+}
+.slider_nav > div {
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #22222266;
+}
+#new_dishes{
+    margin-top: 30px;
+}
+#new_dishes > h4 {
+    font: 400 46px 'Alfa Slab One';
+    color:#1a1b1f;
+}
+#new_dishes > h3{
+    font: 400 28px 'Alfa Slab One';
+    color: #1a1b1f;
+    margin: 20px 0 8px;
+}
+#new_dishes > p{
+    font: 500 16px 'Roboto';
+    color: #1a1b1f;
+    width: 80%;
+}
+#all_new_dishes{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    gap: 10px;
+    justify-content: space-between;
+}
+#all_new_dishes  img{
+    object-fit: cover;
+    width: 270px;
+}
+#all_new_dishes > div{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 360px;
+}
+#all_new_dishes  .info{
+    padding: 10px 20px;
+    width: 270px;
+}
+#all_new_dishes .info h5 , #more_info_box h4{
+    font: 400 16px 'Alfa Slab One';
+    margin-bottom: 15px;
+}
+#all_new_dishes .info p , #all_new_dishes .info a , #more_info_box p, #more_info_box a{
+    line-height: 20px;
+    font: 400 16px 'Roboto';
+}
+#all_new_dishes .info a ,#more_info_box a{
+    position: absolute;
+    bottom: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: underline;
+}
+#all_new_dishes .info a:hover, #more_info_box a:hover{
+    color: #575757;
+}
+#more_info > h4{
+    font: 400 43px 'Alfa Slab One';
+    color: #1a1b1f;
+    margin: 60px 0;
+}
+#more_info_box {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+#more_info_box .info{
+    padding: 10px 20px;
+    width: 350px;
+    background-color:#f5e9dd ;
+    height: 200px;
+}
+#more_info_box > div {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+#more_info_box img{
+    width: 350px;
+}
+#advertising{
+    display: flex;
+    padding: 50px 0;
+    justify-content: space-between;
+    width: 90%;
+    gap: 30px;
+    margin: 70px 0 0 0;
+    align-items: center;
+    cursor: pointer;
+}
+#advertising h1{
+    font: 400 50px 'Alfa Slab One';
+    letter-spacing:2px;
+    line-height: 50px;
+    color: white;
+}
+#advertising p{
+    font: 400 16px 'Roboto';
+    color: white;
+    margin: 15px 0 25px 0;
+}
+#down1 , #down2{
+    width: 180px;
+}
+#phone{
+    width: 300px;
+}
+#adv-col1{
+    width: 500px;
+}
+#comments{
+    display: flex;
+    margin: 90px 0;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+#comments div{
+    width: 30%;
+}
+#comments h5{
+    font: 400 20px 'Alfa Slab One';
+    margin-bottom: 10px;
+    line-height: 30px;
+}
+#comments p{
+    font: 400 18px 'Roboto';
+    line-height: 28px;
+}
+
+#bg{
+    height: 132px;
+}
+@media screen and (max-width: 1130px) {
+    #all_new_dishes  img{
+        width: 242px;
+    }
+    #all_new_dishes .info{
+        width: 242px;
+    }
+    #more_info_box .info,#more_info_box img{
+        width: 300px;
+    }
+}
+@media screen and (max-width: 1100px) {
+    .slider img{
+        width: 715px;
+    }
+    .slider_box{
+        height:358px;
+    }
+    .slider_nav{
+        padding: 30px 0;
+    }
+    
+}
+@media screen and (max-width: 1024px) {
+    .nav_up h4,nav,.nav_up .fa-globe{
+        display: none;
+    }
+    .nav_up button{
+        display: block;
+    }
+    .nav_up img {
+        margin-left:0px;
+    }
+    .fa-bars{
+        display: block !important;
+    }
+    #bg{
+        height: 75px;
+    }
+    #new_dishes > h4 {
+        font-size: 36px;
+    }
+    #new_dishes > h3{
+        font-size:28px ;
+    }
+    #all_new_dishes  img,#all_new_dishes .info{
+        width: 210px;
+    }
+    #more_info_box .info,#more_info_box img{
+        width: 250px;
+    }
+}
+@media screen and (max-width: 900px) {
+    #new_dishes{
+        width:700px ;
+        margin: auto;
+    }
+    #all_new_dishes{
+        justify-content: start;
+        gap: 35px;
+    }
+}
+@media screen and (max-width: 790px) {
+    #more_info_box{
+        flex-direction: column;
+    }
+    #more_info_box .info,#more_info_box img{
+        width: 100%;
+    }
+    #more_info > h4{
+        font-size: 36px;
+    }
+    #more_info{
+        width: 90%;
+        margin: auto;
+    }
+    #phone{
+        display: none;
+    }
+    #advertising{
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+    }
+    #advertising h1{
+        font-size: 40px;
+    }
+    #adv-col1 > div{
+        justify-content: center ;
+    }
+}
+@media screen and (max-width: 720px) {
+    #all_new_dishes{
+        justify-content: start;
+        gap: 15px;
+    }
+    #all_new_dishes  img,#all_new_dishes .info{
+        width: 190px;
+    }
+    #all_new_dishes  .info{
+        padding: 10px 10px;
+    }
+    #new_dishes{
+        width:600px ;
+    }
+}
+@media screen and (max-width: 620px) {
+    #all_new_dishes{
+        flex-direction: column;
+        align-items: center;
+    }
+    #all_new_dishes > div{
+        width: 100%;
+        height: 500px;
+    }
+    #all_new_dishes img,#all_new_dishes .info,#new_dishes p{
+        width: 100%;
+    }
+    #new_dishes{
+        width:90% ;
+    }
+}
+@media screen and (max-width: 600px) {
+    .nav_up a{
+        height: 23px;
+    }
+    .nav_up img {
+        width: 104px;
+    }
+    .nav_up{
+        padding: 15px 0;
+    }
+    .fa-bars{
+        display: block !important;
+    }
+    #bg{
+        height: 65px;
+    }
+    #comments{
+        flex-direction: column;
+    }
+    #comments > div{
+        width: 100%;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 550px) {
+    .slider img{
+        width: 350px;
+        height: 300px;
+    }
+    .slider_box{
+        height:340px;
+    }
+    .slider_nav{
+        padding: 30px 0;
+    }
+    #all_new_dishes > div{
+        height: 450px;
+    }
+    #new_dishes > h4 ,#more_info > h4{
+        font-size: 26px;
+    }
+    #new_dishes > h3{
+        font-size:20px ;
+    }
+    #new_dishes > p{
+        font-size:14px ;
+    }
+    #advertising h1{
+        font-size: 24px;
+        line-height: 28px;
+    }
+    #advertising p{
+        font-size: 14px;
+        line-height: 18px;
+    }
+    #down1,#down2{
+        width: 130px;
+    }
+    #adv-col1 > div{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media screen and (max-width: 450px) {
+    #all_new_dishes > div{
+        height: 400px;
+    }
+}
+@media screen and (max-width: 360px) {
+    .slider img{
+        width: 320px;
+        height: 290px;
+    }
+    .slider_box{
+        height:320px;
+    }
+}
