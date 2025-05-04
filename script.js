@@ -2036,7 +2036,7 @@ for (let i in sliderIMG) {
         sliderNav.innerHTML += `<div onclick = 'changeSliderClick(${+i + 1})' id='slider_nav_${+i + 1}'></div>`
     }
 }
-let imgWidth = 1260
+let imgWidth = document.querySelector('.slider img').clientWidth
 let sliderGap = 20
 window.addEventListener('resize' , () => {
    imgWidth =  document.querySelector('.slider img').clientWidth
