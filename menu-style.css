@@ -1,0 +1,79 @@
+header{
+    background-color: white;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    box-shadow: 1px 1px 6px 2px #dbdbdb;
+}
+:root{
+    --yellow: #cfeb0b;
+}
+.container {
+    max-width: 1140px;
+    margin: auto;
+    padding: 0 10px;
+}
+.nav_up {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px solid #d8d8d8;
+}
+.nav_up img {
+    margin-left: 10px;
+    width: 130px;
+}
+.nav_up i{
+    font-size: 26px;
+    color: #222;
+    margin-right: 10px;
+}
+.fa-bars{
+    font-size: 20px !important;
+    margin-left: 15px;
+    display: none !important;
+}
+.nav_up a{
+    height: 29px; 
+}
+.nav_up h4,nav a{
+    font: 400 16px "Alfa SLab One";
+    color: #000;
+}
+nav {
+    display: flex;
+    padding: 13px 0;
+    justify-content: space-between;
+    align-items: center;
+}
+nav > div {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+nav a{
+    padding: 5px 8px;
+    border-radius: 15px ;
+}
+nav a:hover{
+    background-color: #ebebebd3;
+}
+nav button,.nav_up button{
+    cursor: pointer;
+    font: 400 16px arial;
+    border-radius: 20px;
+    padding: 8px 20px;
+    background-color: var(--yellow);
+    border: 1px solid #222;
+    transition: .5s;
+}
+.nav_up button{
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    display: none;
+}
+nav button:hover,.nav_up button:hover {
+    background-color: white;
+}
