@@ -294,11 +294,7 @@ nav button:hover,.nav_up button:hover {
     }
     #more_info_box .info,#more_info_box img{
         width: 250px;
-    }
-    .slider_box{
-        overflow-x:scroll ;
-    }
-    
+    }    
 }
 @media screen and (max-width: 900px) {
     #new_dishes{
