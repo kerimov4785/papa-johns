@@ -17,7 +17,7 @@ header{
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 15px 0;
     border-bottom: 1px solid #d8d8d8;
 }
 .nav_up img {
@@ -43,7 +43,7 @@ header{
 }
 nav {
     display: flex;
-    padding: 13px 0;
+    padding: 10px 0;
     justify-content: space-between;
     align-items: center;
 }
@@ -242,7 +242,7 @@ nav button:hover,.nav_up button:hover {
 }
 
 #bg{
-    height: 132px;
+    height: 116px;
 }
 @media screen and (max-width: 1130px) {
     #all_new_dishes  img{
