@@ -5,6 +5,9 @@ header{
     width: 100%;
     box-shadow: 1px 1px 6px 2px #dbdbdb;
 }
+html {
+    scroll-behavior: smooth;
+}
 :root{
     --yellow: #cfeb0b;
 }
@@ -84,12 +87,15 @@ nav button:hover,.nav_up button:hover {
 }
 .nav2 a{
     font: 400 18px 'Roboto';
+    cursor: pointer;
 }
 #bg{
     height: 168px;
 }
 .title{
-    font: 400 34px 'Alfa Slab One';
+    font: 400 36px 'Alfa Slab One';
+    margin-top: 30px;
+    text-transform: uppercase;
 }
 main{
     margin-top: 40px;
@@ -99,7 +105,7 @@ main{
 .main_col1{
     width: 780px;
 }
-#sec1{
+.sections{
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -121,7 +127,7 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 180px;
+    height: 160px;
 }
 .card_info h4{
     font: 400 16px 'Alfa Slab One';
@@ -130,7 +136,7 @@ main{
 .card_info h5{
     font: 400 14px 'Roboto';
     color: #72747a;
-    margin: 3px 0 25px;
+    margin: 3px 0 0 0;
 }
 .card_info p{
     font: 400 12px 'Roboto';
@@ -162,9 +168,6 @@ main{
     top: 200px;
     height: 400px;
     width: 340px;
-}
-main{
-    height: 400vh;
 }
 #unvan{
     cursor: pointer;
