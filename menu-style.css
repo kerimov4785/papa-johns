@@ -299,25 +299,36 @@ main{
 .pizza-variations h5 span{
     color: var(--green);
 }
-.pizza-xemir{
-    display: none;
+.pizza-variations{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 .all-olcu{
     display: flex;
     gap: 10px;
 }
-.all-olcu div{
+.all-xemir{
+    display: flex;
+    gap: 10px;
+}
+.all-olcu div , .all-xemir div{
     padding: 10px;
     border-radius: 10px;
     border: 2px solid var(--green);
     background-color: #fff;
 }
-.all-olcu p{
+.all-xemir div{
+    height: 80px;
+    width: 140px;
+    border: 2px solid #c9c9c9;
+}
+.all-olcu p , .all-xemir p{
     font: 400 13px 'Alfa Slab One';
     color: #72747a;
     margin-bottom: 15px;
 }
-.all-olcu h6{
+.all-olcu h6 , .all-xemir h6{
     font: 400 13px 'Alfa Slab One';
     color: var(--green);
 }

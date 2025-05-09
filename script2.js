@@ -2069,6 +2069,9 @@ function addProduct(a,b,c) {
                         </div>
                         <div class = "pizza-xemir">
                             <h5>Xəmirin növünü seçin<span>(Mutleg)</span></h5>
+                            <div class = "all-xemir">
+                                     
+                            </div>
                         </div>
                     </div>
                 </div>
