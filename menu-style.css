@@ -11,6 +11,9 @@ html {
 :root{
     --yellow: #cfeb0b;
 }
+:root{
+    --green:#2d5d2a;
+}
 .container {
     max-width: 1140px;
     margin: auto;
@@ -59,7 +62,7 @@ nav a{
     padding: 5px 8px;
     border-radius: 15px ;
 }
-nav a:hover{
+nav > div a:hover{
     background-color: #ebebebd3;
 }
 nav button,.nav_up button{
@@ -227,4 +230,94 @@ main{
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-top: 15px;
+}
+.selected_nav{
+    background-color: #000 !important;
+    color: white;
+}
+#bg1{
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #0000009c;
+    z-index: 200;
+    width: 100%;
+}
+.pizza-sebet-box{
+    cursor: pointer;
+    width: 80%;
+    height: 95%;
+    border-radius:30px;    
+    background-color: white;
+    overflow: hidden;
+    padding-bottom: 10px;
+    position: relative;
+}
+.pizza-sebet-box i{
+    position: absolute;
+    font-size: 30px;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+.pizza-sebet-box > div:first-child{
+    padding: 40px;
+    background-color: #f6f6f6;
+    height: 87%;
+    display: flex;
+    gap: 25px;
+}
+.about-pizza{
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.about-pizza img{
+    width: 100%;
+    border-radius: 20px;
+}
+.about-pizza > div{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.about-pizza h3{
+    font: 400 32px 'Alfa Slab One';
+    line-height: 34px;
+}
+.about-pizza p{
+    font: 400 14px 'Roboto';
+    color: #212529;
+}
+.pizza-variations h5{
+    font: 400 18px 'Alfa Slab One';
+    margin-bottom: 10px;
+}
+.pizza-variations h5 span{
+    color: var(--green);
+}
+.pizza-xemir{
+    display: none;
+}
+.all-olcu{
+    display: flex;
+    gap: 10px;
+}
+.all-olcu div{
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid var(--green);
+    background-color: #fff;
+}
+.all-olcu p{
+    font: 400 13px 'Alfa Slab One';
+    color: #72747a;
+    margin-bottom: 15px;
+}
+.all-olcu h6{
+    font: 400 13px 'Alfa Slab One';
+    color: var(--green);
 }

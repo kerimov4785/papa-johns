@@ -423,7 +423,7 @@ const data = {
                 {
                     type: "Ənənəvi",
                     price: "20",
-                    size: "Çiken BBQ, Hot&Spaysi, Marqarita, Klassik Pepperoni -  20 M",
+                    size: "Orta -  20 M",
                 },
             ],
             id: "FLvaQ4EYLwwfSZ07FaLxE",
@@ -1530,7 +1530,7 @@ const data = {
         },
     ],
 
-    "lunch": [
+    "qalyanaltilar": [
         {
             img: "https://order.papajohns.az/images/menu/PJ%20Azerbaijan/336x224_305cb7fe83f207951f2fa33840d51938.jpg",
             title: "Pepperoni Rolls",
@@ -1808,7 +1808,7 @@ const data = {
         },
     ],
 
-    "drink": [
+    "icki": [
         {
             img: "https://order.papajohns.az/images/menu/PJ%20Azerbaijan/336x224_d33f50ba9123e71329db8e94b22ce050.jpg",
             title: "Coca Cola 500ml",
@@ -1913,18 +1913,21 @@ const data = {
             title: "Tiramisu",
             price: "7",
             id: "LqUOx499IGm5KS69gzWCW",
+            category: "desert"
         },
         {
             img: "https://order.papajohns.az/images/menu/PJ%20Azerbaijan/336x224_1586374dc56f6447a659ff607eb2ff25.jpg",
             title: "Şokoladlı Sufle",
             price: "5",
             id: "Rl_H4YpvxFumTx-sND0V5",
+            category: "desert"
         },
         {
             img: "https://order.papajohns.az/images/menu/PJ%20Azerbaijan/336x224_cea02388c7e67f4ca204e3ee470e819f.jpg",
             title: "Dondurma",
             price: "2",
             id: "mK-6aVd-B5Ndw3DrHCvQF",
+            category: "desert"
         }
     ],
 
@@ -1978,8 +1981,8 @@ const data = {
 }
 let pizza = document.getElementById("sec2")
 let pizzaTitle = document.getElementById("pizza-title")
-let sections = ['pizza','lunch']
-function secTodo(a,b) {
+let sections = ['pizza', 'lunch']
+function secTodo(a, b) {
     data[a].map(item => {
         document.getElementById(b).innerHTML += `
             <div class="card" id='${item.id}'>
@@ -1987,27 +1990,93 @@ function secTodo(a,b) {
                 <div class="card_info">
                     <div>
                         <h4>${item.title}</h4>
-                        <h5>${item.composition ? item.composition.slice(0,60) : '' }</h5>
+                        <h5>${item.composition ? item.composition.slice(0, 60) : ''}</h5>
                     </div>
                     <div>
-                        <p>${item.price} ${a == 'pizza' ? 'AZN-dən': 'AZN' }</p>
-                        <button>Səbətə əlavə et</button>
+                        <p>${item.price} ${a == 'pizza' ? 'AZN-dən' : 'AZN'}</p>
+                        <button onclick = 'addProduct("${item.id}","${item.category}","${data[a].indexOf(item)}")'>Səbətə əlavə et</button>
                     </div>
                 </div>
             </div>
         `
     })
 }
-secTodo('pizza','sec2')
-secTodo('lunch','sec3')
-secTodo('pasta','sec4')
-secTodo('papadias','sec5')
-secTodo('salat','sec6')
-secTodo('desert','sec7')
-secTodo('drink','sec8')
-secTodo('souses','sec9')
+secTodo('pizza', 'sec2')
+secTodo('qalyanaltilar', 'sec3')
+secTodo('pasta', 'sec4')
+secTodo('papadias', 'sec5')
+secTodo('salat', 'sec6')
+secTodo('desert', 'sec7')
+secTodo('icki', 'sec8')
+secTodo('souses', 'sec9')
+let lastNav = 'sec1'
+let allNav = ['sec1', 'sec2', 'sec3', 'sec4', 'sec5', 'sec6', 'sec6', 'sec7', 'sec8', 'sec9']
+let isScrolling = false;
+for (let i = 1; i <= 9; i++) {
+    let menuNav = document.getElementById(`nav_sec${i}`)
+    menuNav.onmouseenter = function () { this.style.backgroundColor = '#ebebebd3' }
+    menuNav.onmouseleave = function () { this.style.backgroundColor = '#fff' }
+}
 function scrolling(a) {
+    isScrolling = true
     window.scrollTo({
-        top: document.getElementById(`${a}`).offsetTop - 100
+        top: document.getElementById(`${a}`).offsetTop - 50
     })
+    document.getElementById(`nav_${lastNav}`).classList.remove('selected_nav')
+    document.getElementById(`nav_${a}`).classList.add('selected_nav')
+    lastNav = a
+    setTimeout(() => {
+        isScrolling = false;
+    }, 1000)
+}
+window.addEventListener('scroll', function () {
+    if (isScrolling) { return }
+    allNav.forEach(item => {
+        let sec = document.getElementById(item)
+        if (sec.offsetTop - 50 <= window.scrollY && window.scrollY <= sec.offsetTop + sec.offsetHeight) {
+            document.getElementById(`nav_${lastNav}`).classList.remove('selected_nav')
+            document.getElementById(`nav_${item}`).classList.add('selected_nav')
+            if (lastNav != item) {
+                lastNav = item
+            }
+        }
+    })
+})
+let bg = document.getElementById('bg1')
+function addProduct(a,b,c) {
+    bg.style.display = 'flex'
+    let product = data[b][c]
+    if(b == 'pizza'){
+        bg.innerHTML = `
+            <div class = 'pizza-sebet-box'>
+                <div>
+                    <div class = "about-pizza">
+                        <img src = "${product.img}">
+                        <div>
+                            <h3>${product.title}</h3>
+                            <p>${product.composition}</p>
+                        </div>
+                    </div>
+                    <div class = "pizza-variations">
+                        <div class = "pizza-olcu"  style = "display:${product.variations.length == 0 ? 'none' : 'block'}">
+                            <h5>Olcu<span>(Mutleg)</span></h5>
+                            <div class = "all-olcu">
+                                <div>
+                                    <p>${product.variations.length != 0 && product.variations[0].size}</p>
+                                    <h6>${product.price}.00 AZN</h6>
+                                </div>     
+                            </div>
+                        </div>
+                        <div class = "pizza-xemir">
+                            <h5>Xəmirin növünü seçin<span>(Mutleg)</span></h5>
+                        </div>
+                    </div>
+                </div>
+            <i class="fa-solid fa-xmark" onclick = "hide()"></i>
+            </div>
+        `
+    }      
+}
+function hide() {
+    bg.style.display = 'none'
 }
