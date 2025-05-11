@@ -1,24 +1,29 @@
-header{
+header {
     background-color: white;
     position: fixed;
     z-index: 2;
     width: 100%;
     box-shadow: 1px 1px 6px 2px #dbdbdb;
 }
+
 html {
     scroll-behavior: smooth;
 }
-:root{
+
+:root {
     --yellow: #cfeb0b;
 }
-:root{
-    --green:#2d5d2a;
+
+:root {
+    --green: #2d5d2a;
 }
+
 .container {
     max-width: 1140px;
     margin: auto;
     padding: 0 10px;
 }
+
 .nav_up {
     align-items: center;
     display: flex;
@@ -26,46 +31,58 @@ html {
     padding: 15px 0;
     border-bottom: 1px solid #d8d8d8;
 }
+
 .nav_up img {
     margin-left: 10px;
     width: 140px;
 }
-.nav_up i{
+
+.nav_up i {
     font-size: 26px;
     color: #222;
     margin-right: 10px;
 }
-.fa-bars{
+
+.fa-bars {
     font-size: 20px !important;
     margin-left: 15px;
     display: none !important;
 }
-.nav_up a{
-    height: 29px; 
+
+.nav_up a {
+    height: 29px;
 }
-.nav_up h4,nav a{
+
+.nav_up h4,
+nav a {
     font: 400 17px "Alfa SLab One";
     color: #000;
 }
+
 nav {
     display: flex;
     padding: 10px 0;
     justify-content: space-between;
     align-items: center;
 }
-nav > div {
+
+nav>div {
     display: flex;
     gap: 16px;
     align-items: center;
 }
-nav a{
+
+nav a {
     padding: 5px 8px;
-    border-radius: 15px ;
+    border-radius: 15px;
 }
-nav > div a:hover{
+
+nav>div a:hover {
     background-color: #ebebebd3;
 }
-nav button,.nav_up button{
+
+nav button,
+.nav_up button {
     cursor: pointer;
     font: 400 16px arial;
     border-radius: 20px;
@@ -74,105 +91,127 @@ nav button,.nav_up button{
     border: 1px solid #222;
     transition: .5s;
 }
-.nav_up button{
+
+.nav_up button {
     font-size: 14px;
     letter-spacing: 1px;
     font-weight: 600;
     display: none;
 }
-nav button:hover,.nav_up button:hover {
+
+nav button:hover,
+.nav_up button:hover {
     background-color: white;
 }
-.nav2{
+
+.nav2 {
     flex-wrap: wrap;
     justify-content: start;
     column-gap: 15px;
 }
-.nav2 a{
+
+.nav2 a {
     font: 400 18px 'Roboto';
     cursor: pointer;
 }
-#bg{
+
+#bg {
     height: 168px;
 }
-.title{
+
+.title {
     font: 400 36px 'Alfa Slab One';
     margin-top: 30px;
     text-transform: uppercase;
 }
-main{
+
+main {
     margin-top: 40px;
     position: relative;
     display: flex;
 }
-.main_col1{
+
+.main_col1 {
     width: 780px;
 }
-.sections{
+
+.sections {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 20px;
     row-gap: 40px;
 }
-.card{
+
+.card {
     cursor: pointer;
     width: 31%;
     border-radius: 15px;
     overflow: hidden;
 }
-.card img{
+
+.card img {
     border-radius: 15px;
     width: 100%;
 }
-.card_info{
+
+.card_info {
     padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 160px;
 }
-.card_info h4{
+
+.card_info h4 {
     font: 400 16px 'Alfa Slab One';
     line-height: 18px;
 }
-.card_info h5{
+
+.card_info h5 {
     font: 400 14px 'Roboto';
     color: #72747a;
     margin: 3px 0 0 0;
 }
-.card_info p{
+
+.card_info p {
     font: 400 12px 'Roboto';
 }
-.card button{
+
+.card button {
     cursor: pointer;
     width: 100%;
     text-transform: uppercase;
     letter-spacing: 2px;
     font: 400 12px arial;
     border-radius: 20px;
-    padding:5px 20px;
+    padding: 5px 20px;
     background-color: var(--yellow);
     border: 1px solid #222;
     margin-top: 20px;
     visibility: hidden;
 }
-.card:hover{
+
+.card:hover {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-.card:hover .card_info button{
+
+.card:hover .card_info button {
     visibility: visible;
 }
-.card_info button:hover{
+
+.card_info button:hover {
     background-color: white;
 }
-.main_col2{
-    position:sticky;
+
+.main_col2 {
+    position: sticky;
     top: 200px;
     height: 400px;
     width: 340px;
 }
-#unvan{
+
+#unvan {
     cursor: pointer;
     display: flex;
     width: 100%;
@@ -182,15 +221,18 @@ main{
     border: 1px solid #d8d8d8;
     border-radius: 7px;
 }
-#unvan h4{
+
+#unvan h4 {
     font: 400 14px 'Roboto';
     color: #2d5d2a;
 }
-#unvan i{
+
+#unvan i {
     font-size: 12px;
     color: #444444;
 }
-#sebet{
+
+#sebet {
     border: 1px solid #c9c9c9;
     border-radius: 15px;
     display: flex;
@@ -201,25 +243,30 @@ main{
     gap: 10px;
     margin: 15px 0;
 }
-#sebet i{
+
+#sebet i {
     font-size: 70px;
     color: #d8d8d8;
 }
+
 #sebet p {
     font: 400 14px 'Roboto';
     color: #d8d8d8;
 }
-#promokod{
+
+#promokod {
     width: 100%;
     padding: 13px 10px 13px 20px;
     outline: none;
     border-radius: 7px;
     border: 1px solid #d8d8d8;
 }
-#promokod::placeholder{
+
+#promokod::placeholder {
     font: 400 14px 'Roboto';
 }
-#sebet_button{
+
+#sebet_button {
     width: 100%;
     padding: 20px 0;
     background-color: #d8d8d8;
@@ -231,11 +278,13 @@ main{
     letter-spacing: 2px;
     margin-top: 15px;
 }
-.selected_nav{
+
+.selected_nav {
     background-color: #000 !important;
     color: white;
 }
-#bg1{
+
+#bg1 {
     position: fixed;
     display: none;
     justify-content: center;
@@ -245,90 +294,214 @@ main{
     z-index: 200;
     width: 100%;
 }
-.pizza-sebet-box{
+
+.pizza-sebet-box {
+    display: flex;
+    flex-direction: column;
     cursor: pointer;
-    width: 80%;
-    height: 95%;
-    border-radius:30px;    
+    width: 1100px;
+    border-radius: 30px;
+    background-color: white;
+    overflow: hidden;
+    position: relative;
+}
+.other_sebet_box {
+    width: 650px;
+    height: 100vh;
+    border-radius: 30px;
     background-color: white;
     overflow: hidden;
     padding-bottom: 10px;
     position: relative;
 }
-.pizza-sebet-box i{
+
+.fa-xmark {
     position: absolute;
     font-size: 30px;
     top: 10px;
     right: 20px;
     cursor: pointer;
 }
-.pizza-sebet-box > div:first-child{
+
+.pizza-sebet-box>div:first-child ,.other_sebet_box >div:first-child{
     padding: 40px;
     background-color: #f6f6f6;
-    height: 87%;
+    height: 500px;
     display: flex;
     gap: 25px;
 }
-.about-pizza{
+
+.quantity_panel{
+    padding-inline: 40px;
+    height: 70px;
+    display: flex;
+    gap: 20px;
+    justify-content: end;
+    align-items: center;
+}
+.quantity_panel button{
+    background-color: var(--yellow);
+    border: 1px solid #444444;
+    padding: 15px 20px;
+    font: 400 18px 'Roboto';
+    border-radius: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.kol_vo{
+    display: flex ;
+    align-items: center;
+    gap: 10px;
+}
+.kol_vo p{
+    font: 400 16px 'Alfa Slab One';
+    color: var(--green);
+}
+.kol_vo div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #c9c9c9;
+    background-color: white;
+    border-radius: 50%;
+}
+.kol_vo div i{
+    color: var(--green);
+}
+.kol_vo div:hover{
+    background-color: var(--green);
+    border-color: var(--green);
+}
+.quantity_panel h4{
+    font: 400 18px 'Alfa Slab One';
+    color: var(--green);
+}
+.kol_vo div:hover  i{
+    color: white;
+}
+.other_sebet_box > div:first-child{
+    flex-direction: column;
+    gap: 0px ;
+    height: 90% ;
+}
+.other_sebet_box > div h5{
+    font: 400 28px 'Alfa Slab One';
+}
+.other_sebet_box > div p{
+    font: 400 15px 'Roboto';
+}
+.other_sebet_box > div > img{
+    margin-bottom: 20px;
+    width: 100%;
+}
+.about-pizza {
     width: 230px;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-.about-pizza img{
+
+.about-pizza img {
     width: 100%;
     border-radius: 20px;
 }
-.about-pizza > div{
+
+.about-pizza>div {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
-.about-pizza h3{
+
+.about-pizza h3 {
     font: 400 32px 'Alfa Slab One';
     line-height: 34px;
 }
-.about-pizza p{
+
+.about-pizza p {
     font: 400 14px 'Roboto';
     color: #212529;
 }
-.pizza-variations h5{
+
+.pizza-variations h5 {
     font: 400 18px 'Alfa Slab One';
     margin-bottom: 10px;
 }
-.pizza-variations h5 span{
+
+.pizza-variations h5 span {
     color: var(--green);
 }
-.pizza-variations{
-    display: flex;
+
+.pizza-variations {
     flex-direction: column;
     gap: 20px;
 }
-.all-olcu{
+
+.all-olcu {
     display: flex;
     gap: 10px;
 }
-.all-xemir{
+
+.all-xemir {
     display: flex;
     gap: 10px;
 }
-.all-olcu div , .all-xemir div{
+
+.all-olcu div,
+.all-xemir div {
     padding: 10px;
     border-radius: 10px;
     border: 2px solid var(--green);
     background-color: #fff;
+    width: 120px;
 }
-.all-xemir div{
-    height: 80px;
-    width: 140px;
+
+.all-olcu div:hover,
+.all-xemir div:hover {
+    background-color: #fff !important;
+}
+
+.all-xemir div {
+    height: 70px;
     border: 2px solid #c9c9c9;
 }
-.all-olcu p , .all-xemir p{
+
+.all-olcu p,
+.all-xemir p {
     font: 400 13px 'Alfa Slab One';
     color: #72747a;
     margin-bottom: 15px;
 }
-.all-olcu h6 , .all-xemir h6{
+
+.all-olcu h6,
+.all-xemir h6 {
     font: 400 13px 'Alfa Slab One';
     color: var(--green);
+}
+
+.more_size {
+    border: none !important;
+    padding: 0 0 0 20px !important;
+    align-content: end;
+    position: relative;
+}
+
+.more_size p {
+    margin-bottom: 0px;
+    font: 400 14px 'Roboto';
+    color: #c9c9c9;
+    width: 50px;
+}
+
+.more_size p:hover,
+.more_size p:hover~.fa-arrow-right {
+    color: var(--green);
+}
+
+.fa-arrow-right {
+    position: absolute;
+    color: #c9c9c9;
+    left: 83px;
+    bottom: 2px;
 }

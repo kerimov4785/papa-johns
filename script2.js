@@ -460,7 +460,7 @@ const data = {
                 {
                     type: "Nazik",
                     price: "13",
-                    size: "Kiçik, 23 sm -  13 M",
+                    size: "Orta, 30 sm -  13 M",
                 },
                 {
                     type: "Nazik",
@@ -1979,13 +1979,18 @@ const data = {
         }
     ]
 }
+for (let i in data) {
+    data[i].forEach(item => {
+        item.quantity = 1
+    })
+}
 let pizza = document.getElementById("sec2")
 let pizzaTitle = document.getElementById("pizza-title")
 let sections = ['pizza', 'lunch']
 function secTodo(a, b) {
-    data[a].map(item => {
+    data[a].map((item) => {
         document.getElementById(b).innerHTML += `
-            <div class="card" id='${item.id}'>
+            <div class="card" id='${item.id}' onclick = 'selectProduct("${item.id}","${item.category}")'>
                 <img src="${item.img}" alt="">
                 <div class="card_info">
                     <div>
@@ -1994,11 +1999,12 @@ function secTodo(a, b) {
                     </div>
                     <div>
                         <p>${item.price} ${a == 'pizza' ? 'AZN-dən' : 'AZN'}</p>
-                        <button onclick = 'addProduct("${item.id}","${item.category}","${data[a].indexOf(item)}")'>Səbətə əlavə et</button>
+                        <button >Səbətə əlavə et</button>
                     </div>
                 </div>
             </div>
         `
+
     })
 }
 secTodo('pizza', 'sec2')
@@ -2043,10 +2049,13 @@ window.addEventListener('scroll', function () {
     })
 })
 let bg = document.getElementById('bg1')
-function addProduct(a,b,c) {
+let checkedSize
+let checkedType
+function selectProduct(id, b) {
     bg.style.display = 'flex'
-    let product = data[b][c]
-    if(b == 'pizza'){
+    let product = data[b].find(item => item.id == id)
+    checkedSize = product.variations.length != 0 ? product.variations[0].size : ''
+    if (b == 'pizza') {
         bg.innerHTML = `
             <div class = 'pizza-sebet-box'>
                 <div>
@@ -2057,29 +2066,140 @@ function addProduct(a,b,c) {
                             <p>${product.composition}</p>
                         </div>
                     </div>
-                    <div class = "pizza-variations">
-                        <div class = "pizza-olcu"  style = "display:${product.variations.length == 0 ? 'none' : 'block'}">
+                    <div class = "pizza-variations" style = "display:${product.variations.length == 0 ? 'none' : 'flex'}">
+                        <div class = "pizza-olcu">
                             <h5>Olcu<span>(Mutleg)</span></h5>
                             <div class = "all-olcu">
                                 <div>
-                                    <p>${product.variations.length != 0 && product.variations[0].size}</p>
-                                    <h6>${product.price}.00 AZN</h6>
-                                </div>     
+                                    <p>${product.variations.length != 0 && getSize(product.variations[0].size)}</p>
+                                    <h6>${product.variations[0].price}${!Number.isInteger(+product.variations[0].price) ? '0' : '.00'} AZN</h6>
+                                </div>
+                                <div class = "more_size" style = 'background-color: transparent !important'>
+                                    <p onclick = "showAllSize('${id}')">Digər variant seçin</p>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>        
                             </div>
                         </div>
                         <div class = "pizza-xemir">
                             <h5>Xəmirin növünü seçin<span>(Mutleg)</span></h5>
                             <div class = "all-xemir">
-                                     
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class = 'quantity_panel'>
+                    <div class = "kol_vo">
+                        <div><i class="fa-solid fa-minus"></i></div>
+                        <p>${product.quantity}</p>
+                        <div><i class="fa-solid fa-plus"></i></div>
+                    </div>
+                    <h4>${product.price * product.quantity} AZN</h4>
+                    <button>əlavə et</button>
+                </div>
             <i class="fa-solid fa-xmark" onclick = "hide()"></i>
             </div>
         `
-    }      
+        showType(id, checkedSize)
+    } else {
+        bg.innerHTML = `
+            <div class = "other_sebet_box">
+                <div>
+                    <img src = "${product.img}" />
+                    <h5>${product.title}</h5>
+                    <p>${product.composition}</p>
+                </div>
+                <i class="fa-solid fa-xmark" onclick = "hide()"></i>
+            </div>
+        `
+    }
+}
+function showType(id, ok) {
+    let allXemir = document.querySelector('.all-xemir')
+    let product = data['pizza'].find(item => item.id == id).variations
+        .filter(item => item.size == ok)
+    checkedType = product[0].type
+    if (product.length != 0) {
+        allXemir.innerHTML = `
+        <div style="border-color:#2d5d2a">
+            <p>${product[0].type}</p>
+        </div>
+        <div class = "more_size" style = 'background-color: transparent !important'>
+            <p onclick = "showAllType('${id}','${ok}')">Digər variant seçin</p>
+            <i class="fa-solid fa-arrow-right"></i>
+        </div> 
+    `
+    }
+}
+function showAllType(id, ok) {
+    let allXemir = document.querySelector('.all-xemir')
+    allXemir.innerHTML = ''
+    data['pizza'].find(item => item.id == id).variations
+        .filter(item => item.size == ok)
+        .map(item => {
+            allXemir.innerHTML += `
+            <div style="background:transparent" onclick = "showCheckedType('${item.type}','${item.size}','${id}')">
+                <p>${item.type}</p>
+            </div>`
+        })
+}
+function showCheckedType(xemir, olcu, id) {
+    let allXemir = document.querySelector('.all-xemir')
+    checkedType = xemir
+    allXemir.innerHTML = `
+        <div style="border-color:#2d5d2a">
+            <p>${xemir}</p>
+        </div>
+        <div class = "more_size" style = 'background-color: transparent !important'>
+            <p onclick = "showAllType('${id}','${olcu}')">Digər variant seçin</p>
+            <i class="fa-solid fa-arrow-right"></i>
+        </div> 
+    `
+}
+function showAllSize(id) {
+    const allSize = document.querySelector(".all-olcu")
+    let product = data['pizza'].find(item => item.id == id).variations
+    allSize.innerHTML = ''
+    product.filter(item => { return item.type == 'Ənənəvi' }).map(item => {
+        allSize.innerHTML += `
+            <div style="background:transparent" onclick = "showCheckedSize('${item.size}',${item.price},'${id}')">
+                <p>${item.length != 0 && getSize(item.size)}</p>
+                <h6>${item.price}${!Number.isInteger(+item.price) ? '0' : '.00'} AZN</h6>
+            </div>
+        `
+    })
+}
+function showCheckedSize(olcu, qiymet, id) {
+    const allSize = document.querySelector('.all-olcu')
+    const panelPrice = document.querySelector('.quantity_panel h4')
+    panelPrice.innerHTML = `${qiymet } AZN`
+    checkedSize = olcu
+    showType(id, checkedSize)
+    allSize.innerHTML = `
+        <div>
+            <p>${getSize(olcu)}</p>
+            <h6>${qiymet}${!Number.isInteger(+qiymet) ? '0' : '.00'} AZN</h6>
+        </div>
+        <div class = "more_size" style = 'background-color: transparent !important'>
+            <p onclick = "showAllSize('${id}')">Digər variant seçin</p>
+            <i class="fa-solid fa-arrow-right"></i>
+        </div> 
+    `
+}
+function getSize(a) {
+    if (a.includes('Mini')) {
+        return 'Mini'
+    }
+    if (a.includes('Kiçik')) {
+        return 'Kiçik'
+    }
+    if (a.includes('Orta')) {
+        return 'Orta'
+    }
+    if (a.includes('Böyük')) {
+        return 'Böyük'
+    }
 }
 function hide() {
     bg.style.display = 'none'
+    bg.innerHTML = ''
 }
