@@ -1913,21 +1913,24 @@ const data = {
             title: "Tiramisu",
             price: "7",
             id: "LqUOx499IGm5KS69gzWCW",
-            category: "desert"
+            category: "desert",
+            variations: [],
         },
         {
             img: "https://order.papajohns.az/images/menu/PJ%20Azerbaijan/336x224_1586374dc56f6447a659ff607eb2ff25.jpg",
             title: "Şokoladlı Sufle",
             price: "5",
             id: "Rl_H4YpvxFumTx-sND0V5",
-            category: "desert"
+            category: "desert",
+            variations: []
         },
         {
             img: "https://order.papajohns.az/images/menu/PJ%20Azerbaijan/336x224_cea02388c7e67f4ca204e3ee470e819f.jpg",
             title: "Dondurma",
             price: "2",
             id: "mK-6aVd-B5Ndw3DrHCvQF",
-            category: "desert"
+            category: "desert",
+            variations: [],
         }
     ],
 
@@ -1980,9 +1983,21 @@ const data = {
     ]
 }
 for (let i in data) {
-    data[i].forEach(item => {
-        item.quantity = 1
-    })
+    if (i == 'pizza') {
+        data['pizza'].forEach(item => {
+            if (item.variations.length != 0) {
+                item.variations.forEach(item =>
+                    item.quantity = 1
+                )
+            }else{
+                item.quantity = 1
+            }
+        })
+    } else {
+        data[i].forEach(item => {
+            item.quantity = 1
+        })
+    }
 }
 let pizza = document.getElementById("sec2")
 let pizzaTitle = document.getElementById("pizza-title")
@@ -2049,13 +2064,13 @@ window.addEventListener('scroll', function () {
     })
 })
 let bg = document.getElementById('bg1')
-let checkedSize
+let checkedSize 
 let checkedType
 function selectProduct(id, b) {
     bg.style.display = 'flex'
     let product = data[b].find(item => item.id == id)
     checkedSize = product.variations.length != 0 ? product.variations[0].size : ''
-    if (b == 'pizza') {
+    if (b == 'pizza' && product.variations.length != 0) {
         bg.innerHTML = `
             <div class = 'pizza-sebet-box'>
                 <div>
@@ -2089,11 +2104,11 @@ function selectProduct(id, b) {
                 </div>
                 <div class = 'quantity_panel'>
                     <div class = "kol_vo">
-                        <div><i class="fa-solid fa-minus"></i></div>
-                        <p>${product.quantity}</p>
-                        <div><i class="fa-solid fa-plus"></i></div>
+                        <div onclick = "minusQuantity('${id}','${b}')"><i class="fa-solid fa-minus"></i></div>
+                        <p>${product.variations[0].quantity}</p>
+                        <div onclick = "plusQuantity('${id}','${b}')"><i class="fa-solid fa-plus"></i></div>
                     </div>
-                    <h4>${product.price * product.quantity} AZN</h4>
+                    <h4>${product.variations[0].price * product.variations[0].quantity} AZN</h4>
                     <button>əlavə et</button>
                 </div>
             <i class="fa-solid fa-xmark" onclick = "hide()"></i>
@@ -2108,15 +2123,54 @@ function selectProduct(id, b) {
                     <h5>${product.title}</h5>
                     <p>${product.composition}</p>
                 </div>
+                <div class = 'quantity_panel'>
+                    <div class = "kol_vo">
+                        <div onclick = "minusQuantity2('${id}','${b}')"><i class="fa-solid fa-minus"></i></div>
+                        <p>${product.quantity}</p>
+                        <div onclick = "plusQuantity2('${id}','${b}')"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+                    <h4>${product.price * product.quantity} AZN</h4>
+                    <button>əlavə et</button>
+                </div>
                 <i class="fa-solid fa-xmark" onclick = "hide()"></i>
             </div>
         `
     }
 }
+function updatePrice(product) {
+    const panelPrice = document.querySelector('.quantity_panel h4')
+    const panelQuantity = document.querySelector('.kol_vo p')
+    panelQuantity.innerHTML = product.quantity
+    panelPrice.innerHTML = `${product.quantity * product.price} AZN`
+}
+function plusQuantity2(id,b) {
+    let product = data[b].find(item => item.id == id)
+    product.quantity++
+    updatePrice(product)   
+}
+function minusQuantity2(id,b) {
+    let product = data[b].find(item => item.id == id)
+    product.quantity > 1 ? product.quantity-- : 1
+    updatePrice(product) 
+}
+function plusQuantity(id,b) {
+    let product = data[b].find(item => item.id == id).variations
+        .find(item => item.type == checkedType && item.size == checkedSize)
+        product.quantity++ 
+    updatePrice(product)
+}
+function minusQuantity(id,b) {
+    let product = data[b].find(item => item.id == id).variations
+        .find(item => item.type == checkedType && item.size == checkedSize)
+        product.quantity > 1 ? product.quantity-- : 1
+    updatePrice(product)
+}
 function showType(id, ok) {
     let allXemir = document.querySelector('.all-xemir')
     let product = data['pizza'].find(item => item.id == id).variations
-        .filter(item => item.size == ok)
+        .filter(item => item.size == ok).sort((a, b) => a.type.localeCompare(b.type , 'az'))
+    console.log(product);
+    
     checkedType = product[0].type
     if (product.length != 0) {
         allXemir.innerHTML = `
@@ -2137,13 +2191,17 @@ function showAllType(id, ok) {
         .filter(item => item.size == ok)
         .map(item => {
             allXemir.innerHTML += `
-            <div style="background:transparent" onclick = "showCheckedType('${item.type}','${item.size}','${id}')">
+            <div style="background:transparent" onclick = "showCheckedType('${item.type}','${item.size}','${id}','${item.quantity}','${item.price}')">
                 <p>${item.type}</p>
             </div>`
         })
 }
-function showCheckedType(xemir, olcu, id) {
+function showCheckedType(xemir, olcu, id, miqdar, qiymet) {
     let allXemir = document.querySelector('.all-xemir')
+    const panelPrice = document.querySelector('.quantity_panel h4')
+    const panelQuantity = document.querySelector('.kol_vo p')
+    panelQuantity.innerHTML = miqdar
+    panelPrice.innerHTML = `${miqdar * qiymet} AZN`
     checkedType = xemir
     allXemir.innerHTML = `
         <div style="border-color:#2d5d2a">
@@ -2161,17 +2219,20 @@ function showAllSize(id) {
     allSize.innerHTML = ''
     product.filter(item => { return item.type == 'Ənənəvi' }).map(item => {
         allSize.innerHTML += `
-            <div style="background:transparent" onclick = "showCheckedSize('${item.size}',${item.price},'${id}')">
+            <div style="background:transparent" onclick = "showCheckedSize('${item.size}',${item.price},'${id}','${item.quantity}')">
                 <p>${item.length != 0 && getSize(item.size)}</p>
                 <h6>${item.price}${!Number.isInteger(+item.price) ? '0' : '.00'} AZN</h6>
             </div>
         `
+        // showCheckedType(`'${item.type}','${item.size}','${item.id}','${item.quantity}','${item.price}'`)
     })
 }
-function showCheckedSize(olcu, qiymet, id) {
+function showCheckedSize(olcu, qiymet, id, miqdar) {
     const allSize = document.querySelector('.all-olcu')
     const panelPrice = document.querySelector('.quantity_panel h4')
-    panelPrice.innerHTML = `${qiymet } AZN`
+    const panelQuantity = document.querySelector('.kol_vo p')
+    panelQuantity.innerHTML = miqdar
+    panelPrice.innerHTML = `${miqdar * qiymet} AZN`
     checkedSize = olcu
     showType(id, checkedSize)
     allSize.innerHTML = `
