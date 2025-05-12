@@ -19,6 +19,9 @@ header{
     justify-content: space-between;
     padding: 15px 0;
     border-bottom: 1px solid #d8d8d8;
+    position: relative;
+    z-index: 2;
+    background-color: white;
 }
 .nav_up img {
     margin-left: 10px;
@@ -243,6 +246,44 @@ nav button:hover,.nav_up button:hover {
 
 #bg{
     height: 116px;
+}
+.mobile-nav{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 25px 0;
+}
+#mobile_lang{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 20px 0;
+    border-top: 1px solid #d8d8d8;
+    border-bottom: 1px solid #d8d8d8;
+}
+#mobile_lang h4{
+    font: 600 18px 'Roboto';
+    line-height: 18px;
+}
+#mobile_lang i{
+    font-size: 20px;
+    margin-bottom: 1px;
+}
+.mobile-nav p{
+    font: 400 18px 'Roboto';
+}
+.mobile-nav a{
+    color: black;
+    font: 600 18px 'Roboto';
+}
+.white{
+    position: absolute;
+    top: 100%;
+    transform: translateY(-140%);
+    transition: 0.5s;
+    width: 100%;
+    background-color: white;
+    z-index: 0;
 }
 @media screen and (max-width: 1130px) {
     #all_new_dishes  img{

@@ -112,3 +112,14 @@ newPizza.map(item => {
 
     `
 })
+let flag = true
+let mobNav = document.querySelector('.white')
+function showNav() {
+    if(flag){
+        mobNav.style.transform = 'translateY(0%)'
+        flag = !flag
+    }else{
+        mobNav.style.transform = 'translateY(-140%)'
+        flag = !flag
+    }
+}
