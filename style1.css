@@ -247,6 +247,9 @@ nav button:hover,.nav_up button:hover {
 #bg{
     height: 116px;
 }
+nav > button{
+    color: black !important;
+}
 .mobile-nav{
     display: flex;
     flex-direction: column;
