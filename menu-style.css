@@ -628,8 +628,8 @@ main {
         background-color: var(--yellow);
     }
     nav a:hover{
-        background-color: black !important;
-        color: white;
+        background-color: white !important;
+        color: black;
     }
 }
 @media screen and (max-width: 600px) {
