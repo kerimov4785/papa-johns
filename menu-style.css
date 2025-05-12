@@ -621,6 +621,12 @@ main {
     #sec7 .card_info,#sec8 .card_info,#sec9 .card_info{
         height: 100px;
     }
+    .mob button{
+        color: black !important;
+    }
+    .mob button:hover{
+        background-color: var(--yellow);
+    }
 }
 @media screen and (max-width: 600px) {
     .card{
