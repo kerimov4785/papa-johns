@@ -30,6 +30,9 @@ html {
     justify-content: space-between;
     padding: 15px 0;
     border-bottom: 1px solid #d8d8d8;
+    position: relative;
+    z-index: 2;
+    background-color: white;
 }
 
 .nav_up img {
@@ -44,9 +47,8 @@ html {
 }
 
 .fa-bars {
-    font-size: 20px !important;
-    margin-left: 15px;
-    display: none !important;
+    font-size: 23px !important;
+    margin-bottom: 1px;
 }
 
 .nav_up a {
@@ -92,11 +94,14 @@ nav button,
     transition: .5s;
 }
 
+.mob {
+    display: none;
+}
+
 .nav_up button {
     font-size: 14px;
     letter-spacing: 1px;
     font-weight: 600;
-    display: none;
 }
 
 nav button:hover,
@@ -108,6 +113,9 @@ nav button:hover,
     flex-wrap: wrap;
     justify-content: start;
     column-gap: 15px;
+    position: relative;
+    z-index: 2;
+    background-color: white;
 }
 
 .nav2 a {
@@ -305,6 +313,7 @@ main {
     overflow: hidden;
     position: relative;
 }
+
 .other_sebet_box {
     width: 650px;
     height: 100vh;
@@ -323,7 +332,8 @@ main {
     cursor: pointer;
 }
 
-.pizza-sebet-box>div:first-child ,.other_sebet_box >div:first-child{
+.pizza-sebet-box>div:first-child,
+.other_sebet_box>div:first-child {
     padding: 40px;
     background-color: #f6f6f6;
     height: 500px;
@@ -331,7 +341,7 @@ main {
     gap: 25px;
 }
 
-.quantity_panel{
+.quantity_panel {
     padding-inline: 40px;
     height: 70px;
     display: flex;
@@ -339,7 +349,8 @@ main {
     justify-content: end;
     align-items: center;
 }
-.quantity_panel button{
+
+.quantity_panel button {
     background-color: var(--yellow);
     border: 1px solid #444444;
     padding: 15px 20px;
@@ -348,16 +359,19 @@ main {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-.kol_vo{
-    display: flex ;
+
+.kol_vo {
+    display: flex;
     align-items: center;
     gap: 10px;
 }
-.kol_vo p{
+
+.kol_vo p {
     font: 400 16px 'Alfa Slab One';
     color: var(--green);
 }
-.kol_vo div{
+
+.kol_vo div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -367,35 +381,44 @@ main {
     background-color: white;
     border-radius: 50%;
 }
-.kol_vo div i{
+
+.kol_vo div i {
     color: var(--green);
 }
-.kol_vo div:hover{
+
+.kol_vo div:hover {
     background-color: var(--green);
     border-color: var(--green);
 }
-.quantity_panel h4{
+
+.quantity_panel h4 {
     font: 400 18px 'Alfa Slab One';
     color: var(--green);
 }
-.kol_vo div:hover  i{
+
+.kol_vo div:hover i {
     color: white;
 }
-.other_sebet_box > div:first-child{
+
+.other_sebet_box>div:first-child {
     flex-direction: column;
-    gap: 0px ;
-    height: 90% ;
+    gap: 0px;
+    height: 90%;
 }
-.other_sebet_box > div h5{
+
+.other_sebet_box>div h5 {
     font: 400 28px 'Alfa Slab One';
 }
-.other_sebet_box > div p{
+
+.other_sebet_box>div p {
     font: 400 15px 'Roboto';
 }
-.other_sebet_box > div > img{
+
+.other_sebet_box>div>img {
     margin-bottom: 20px;
     width: 100%;
 }
+
 .about-pizza {
     width: 230px;
     display: flex;
@@ -504,4 +527,115 @@ main {
     color: #c9c9c9;
     left: 83px;
     bottom: 2px;
+}
+
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 25px 0;
+}
+
+#mobile_lang {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 20px 0;
+    border-top: 1px solid #d8d8d8;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+#mobile_lang h4 {
+    font: 600 18px 'Roboto';
+    line-height: 18px;
+}
+
+#mobile_lang i {
+    font-size: 20px;
+    margin-bottom: 1px;
+}
+
+.mobile-nav p {
+    font: 400 18px 'Roboto';
+}
+
+.mobile-nav a {
+    color: black;
+    font: 600 18px 'Roboto';
+}
+
+.white {
+    position: absolute;
+    top: 100%;
+    transform: translateY(-200%);
+    transition: 0.5s;
+    width: 100%;
+    background-color: white;
+    z-index: 0;
+}
+
+#comp {
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 1100px) {
+    .mob {
+        display: flex;
+        align-items: center;
+    }
+
+    #comp {
+        display: none;
+    }
+    .nav1{
+        display: none;
+    }
+    .main_col2{
+        display: none;
+    }
+    #bg{
+        height: 149px;
+    }
+    .main_col1{
+        width: 100%;
+    }
+    .card{
+        width: 32%;
+    }
+    .sections{
+        justify-content: space-between;
+    }
+}
+@media screen and (max-width: 768px) {
+    .nav2{
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+    }
+    #bg{
+        height: 117px;
+    }
+    .card button{
+        display: none;
+    }
+    #sec7 .card_info,#sec8 .card_info,#sec9 .card_info{
+        height: 100px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .card{
+        width: 48%;
+    }
+    .title{
+        font-size: 24px;
+    }
+    .nav_up img{
+        width: 120px;
+    }
+}
+@media screen and (max-width: 390px) {
+    .card_info h4{
+        font-size: 14px;
+        line-height: 16px;
+    }
 }

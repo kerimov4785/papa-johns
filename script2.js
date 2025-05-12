@@ -2168,9 +2168,7 @@ function minusQuantity(id,b) {
 function showType(id, ok) {
     let allXemir = document.querySelector('.all-xemir')
     let product = data['pizza'].find(item => item.id == id).variations
-        .filter(item => item.size == ok).sort((a, b) => a.type.localeCompare(b.type , 'az'))
-    console.log(product);
-    
+        .filter(item => item.size == ok).sort((a, b) => a.type.localeCompare(b.type , 'az'))    
     checkedType = product[0].type
     if (product.length != 0) {
         allXemir.innerHTML = `
@@ -2263,4 +2261,15 @@ function getSize(a) {
 function hide() {
     bg.style.display = 'none'
     bg.innerHTML = ''
+}
+let flag = true
+let mobNav = document.querySelector('.white')
+function showNav() {
+    if(flag){
+        mobNav.style.transform = 'translateY(0%)'
+        flag = !flag
+    }else{
+        mobNav.style.transform = 'translateY(-200%)'
+        flag = !flag
+    }
 }
