@@ -627,6 +627,10 @@ main {
     .mob button:hover{
         background-color: var(--yellow);
     }
+    nav a:hover{
+        background-color: black !important;
+        color: white;
+    }
 }
 @media screen and (max-width: 600px) {
     .card{
