@@ -648,6 +648,9 @@ main {
         z-index: 3;
         background-color: white;
     }
+    .other_sebet_box{
+        height: 70vh;
+    }
 }
 @media screen and (max-width: 600px) {
     .card{
@@ -659,10 +662,28 @@ main {
     .nav_up img{
         width: 120px;
     }
+    .other_sebet_box{
+        height: 70vh;
+    }
+    .quantity_panel{
+        height: 100px;
+        padding-inline: 20px;
+    }
+    .other_sebet_box>div:first-child{
+        height: 85%;
+        padding-inline: 20px;
+    }
 }
 @media screen and (max-width: 390px) {
     .card_info h4{
         font-size: 14px;
         line-height: 16px;
+    }
+    .other_sebet_box{
+        height: 50vh;
+    }
+    .other_sebet_box>div:first-child{
+        height: 75%;
+        padding-inline: 20px;
     }
 }
