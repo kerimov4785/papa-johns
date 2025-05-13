@@ -2121,7 +2121,7 @@ function selectProduct(id, b) {
                 <div>
                     <img src = "${product.img}" />
                     <h5>${product.title}</h5>
-                    <p>${product.composition}</p>
+                    <p>${product.composition || ''}</p>
                 </div>
                 <div class = 'quantity_panel'>
                     <div class = "kol_vo">

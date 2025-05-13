@@ -464,11 +464,13 @@ main {
 .all-olcu {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .all-xemir {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .all-olcu div,
@@ -626,6 +628,25 @@ main {
     }
     .mob button:hover{
         background-color: var(--yellow);
+    }
+    .pizza-sebet-box>div:first-child{
+        flex-direction: column;
+        overflow-x: scroll;
+    }
+    .about-pizza{
+        width: 100%;
+    }
+    .about-pizza h3{
+        font-size: 18px;
+        line-height: 20px;
+    }
+    .about-pizza p{
+        font-size: 14px;
+    }
+    .quantity_panel{
+        position: relative;
+        z-index: 3;
+        background-color: white;
     }
 }
 @media screen and (max-width: 600px) {
