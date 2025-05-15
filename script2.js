@@ -2390,25 +2390,19 @@ function plusSebetQuantity(id, b, size, type) {
     showProductSebet()
 }
 let totalPrice = document.querySelector('#total span')
+let mobPrice = document.getElementById("mob_price")
 function updateTotal() {
     let sum = 0
     sebetProducts.forEach(item => {
         sum += (item.sebetPrice * item.sebetQuantity) || (item.price * item.quantity)
     })
     totalPrice.innerHTML = sum
+    mobPrice.innerHTML = `${sum} AZN`
 }
-/* <div class="ordered_product">
-                            <div>
-                                <h5>Cheddar Çiken Club - Böyük, 35 sm</h5>
-                                <i class="fa-solid fa-xmark"></i>
-                            </div>
-                            <p>Nazik</p>
-                            <div>
-                                <div class="sebet_kol_vo">
-                                    <div><i class="fa-solid fa-minus"></i></div>
-                                    <p>3</p>
-                                    <div><i class="fa-solid fa-plus"></i></div>
-                                </div>
-                                <h4>22.00 azn</h4>
-                            </div>
-                        </div> */
+let mobSebet = document.querySelector('.main_col2')
+function  showSebet() {
+    mobSebet.style.right = '0'
+}
+function hideMobSebet() {
+    mobSebet.style.right = '-100%'
+}

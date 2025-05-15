@@ -669,6 +669,31 @@ main {
     display: flex;
     align-items: center;
 }
+.mob_sebet{
+    display: none;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0px;
+    background-color: var(--green);
+    padding: 20px 10px;
+    z-index: 3;
+    width: 100%;
+}
+.mob_sebet i{
+    color: white;
+    font-size: 16px;
+}
+#mob_price{
+    color: white;
+    font: 400 15px 'Roboto';
+    cursor: pointer;
+}
+.main_col2 > i{
+    font-size: 16px ;
+    position: absolute;
+    top: 18px;
+    color: var(--green);
+}
 @media screen and (max-width: 1100px) {
     .mob {
         display: flex;
@@ -683,7 +708,19 @@ main {
         display: none;
     }
     .main_col2{
-        display: none;
+        position: fixed;
+        padding-top: 50px;
+        background-color: white;
+        width: 100%;
+        height: 100vh;
+        top: 0px;
+        z-index: 4;
+        padding: 50px 10px 0;
+        right: -100%;
+        transition: 0.5s;
+    }
+    .mob_sebet{
+        display: flex;
     }
     #bg{
         height: 149px;
@@ -761,6 +798,9 @@ main {
     .other_sebet_box>div:first-child{
         height: 85%;
         padding-inline: 20px;
+    }
+    #sebet_button{
+        font-size: 12px;
     }
 }
 @media screen and (max-width: 390px) {
