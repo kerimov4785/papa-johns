@@ -1989,7 +1989,7 @@ for (let i in data) {
                 item.variations.forEach(item =>
                     item.quantity = 1
                 )
-            }else{
+            } else {
                 item.quantity = 1
             }
         })
@@ -2002,6 +2002,7 @@ for (let i in data) {
 let pizza = document.getElementById("sec2")
 let pizzaTitle = document.getElementById("pizza-title")
 let sections = ['pizza', 'lunch']
+let sebetProducts = []
 function secTodo(a, b) {
     data[a].map((item) => {
         document.getElementById(b).innerHTML += `
@@ -2064,7 +2065,7 @@ window.addEventListener('scroll', function () {
     })
 })
 let bg = document.getElementById('bg1')
-let checkedSize 
+let checkedSize
 let checkedType
 function selectProduct(id, b) {
     bg.style.display = 'flex'
@@ -2109,7 +2110,7 @@ function selectProduct(id, b) {
                         <div onclick = "plusQuantity('${id}','${b}')"><i class="fa-solid fa-plus"></i></div>
                     </div>
                     <h4>${product.variations[0].price * product.variations[0].quantity} AZN</h4>
-                    <button>əlavə et</button>
+                    <button id="add_button" onclick = "addProduct('${id}','${b}')">əlavə et</button>
                 </div>
             <i class="fa-solid fa-xmark" onclick = "hide()"></i>
             </div>
@@ -2130,7 +2131,7 @@ function selectProduct(id, b) {
                         <div onclick = "plusQuantity2('${id}','${b}')"><i class="fa-solid fa-plus"></i></div>
                     </div>
                     <h4>${product.price * product.quantity} AZN</h4>
-                    <button>əlavə et</button>
+                    <button onclick = "addProduct('${id}','${b}')" >əlavə et</button>
                 </div>
                 <i class="fa-solid fa-xmark" onclick = "hide()"></i>
             </div>
@@ -2143,32 +2144,32 @@ function updatePrice(product) {
     panelQuantity.innerHTML = product.quantity
     panelPrice.innerHTML = `${product.quantity * product.price} AZN`
 }
-function plusQuantity2(id,b) {
+function plusQuantity2(id, b) {
     let product = data[b].find(item => item.id == id)
     product.quantity++
-    updatePrice(product)   
-}
-function minusQuantity2(id,b) {
-    let product = data[b].find(item => item.id == id)
-    product.quantity > 1 ? product.quantity-- : 1
-    updatePrice(product) 
-}
-function plusQuantity(id,b) {
-    let product = data[b].find(item => item.id == id).variations
-        .find(item => item.type == checkedType && item.size == checkedSize)
-        product.quantity++ 
     updatePrice(product)
 }
-function minusQuantity(id,b) {
+function minusQuantity2(id, b) {
+    let product = data[b].find(item => item.id == id)
+    product.quantity > 1 ? product.quantity-- : 1
+    updatePrice(product)
+}
+function plusQuantity(id, b) {
     let product = data[b].find(item => item.id == id).variations
         .find(item => item.type == checkedType && item.size == checkedSize)
-        product.quantity > 1 ? product.quantity-- : 1
+    product.quantity++
+    updatePrice(product)
+}
+function minusQuantity(id, b) {
+    let product = data[b].find(item => item.id == id).variations
+        .find(item => item.type == checkedType && item.size == checkedSize)
+    product.quantity > 1 ? product.quantity-- : 1
     updatePrice(product)
 }
 function showType(id, ok) {
     let allXemir = document.querySelector('.all-xemir')
     let product = data['pizza'].find(item => item.id == id).variations
-        .filter(item => item.size == ok).sort((a, b) => a.type.localeCompare(b.type , 'az'))    
+        .filter(item => item.size == ok).sort((a, b) => a.type.localeCompare(b.type, 'az'))
     checkedType = product[0].type
     if (product.length != 0) {
         allXemir.innerHTML = `
@@ -2265,11 +2266,149 @@ function hide() {
 let flag = true
 let mobNav = document.querySelector('.white')
 function showNav() {
-    if(flag){
+    if (flag) {
         mobNav.style.transform = 'translateY(0%)'
         flag = !flag
-    }else{
+    } else {
         mobNav.style.transform = 'translateY(-200%)'
         flag = !flag
     }
 }
+
+let orderedProducts = document.getElementById("ordered_products")
+let total = document.getElementById("total")
+let icon1 = document.getElementById("icon1")
+let icon2 = document.getElementById("icon2")
+let orderButton = document.getElementById('sebet_button')
+function addProduct(id, b) {
+    orderButton.classList.add('order_sebet')
+    bg.style.display = 'none';
+    icon1.style.display = 'none';
+    icon2.style.display = 'none';
+    orderedProducts.style.display = 'flex';
+    total.style.display = 'flex';
+    const pizza = data['pizza'].find(item => item.id == id);
+
+    if (b == 'pizza' && pizza.variations.length != 0) {
+        const selectedVariation = pizza.variations.find(v =>
+            v.size.includes(checkedSize) && v.type === checkedType
+        )
+        const pizzaToAdd = {
+            ...pizza,
+            sebetSize: checkedSize,
+            sebetType: checkedType,
+            sebetPrice: selectedVariation.price,
+            sebetQuantity: selectedVariation.quantity
+        };
+        let prd = sebetProducts.find(item => item.id == id && item.sebetSize == checkedSize && item.sebetType == checkedType)
+        if (!prd) {
+            sebetProducts.push(pizzaToAdd);
+        } else {
+            prd.sebetPrice = selectedVariation.price
+            prd.sebetQuantity = selectedVariation.quantity
+
+        }
+    } else {
+        const product = data[b].find(item => item.id == id)
+        let prd2 = sebetProducts.find(item => item.id == id)
+        if (!prd2) {
+            sebetProducts.push(product)
+        }
+        else {
+            prd2.quantity = product.quantity
+        }
+    }
+
+    showProductSebet()
+
+}
+function showProductSebet() {
+    orderedProducts.innerHTML = '';
+    sebetProducts.map(item => {
+        orderedProducts.innerHTML += `
+        <div class="ordered_product">
+            <div>
+                <h5>${item.title} ${item.sebetSize ? '-' + getSize(item.sebetSize) : ''}</h5>
+                <i class="fa-solid fa-xmark" onclick = "deleteProductFromSebet('${item.id}','${item.category}','${item.sebetSize}','${item.sebetType}')"></i>
+            </div>
+            <p>${item.sebetType || ''}</p>
+            <div>
+                <div class="sebet_kol_vo">
+                    <div onclick = "minusSebetQuantity('${item.id}','${item.category}','${item.sebetSize}','${item.sebetType}')"><i class="fa-solid fa-minus"></i></div>
+                    <p>${item.sebetQuantity || item.quantity}</p>
+                    <div onclick = "plusSebetQuantity('${item.id}','${item.category}','${item.sebetSize}','${item.sebetType}')"><i class="fa-solid fa-plus"></i></div>
+                </div>
+                <h4>${(item.sebetPrice * item.sebetQuantity) || (item.price * item.quantity)} AZN</h4>
+            </div>
+        </div>
+        `;
+    });
+    updateTotal();
+}
+function deleteProductFromSebet(id, b, size, type) {
+    if (b == 'pizza' && data[b].find(item => item.id == id).variations.length != 0) {
+        let prd = sebetProducts.findIndex(item => item.id == id && item.sebetSize == size && item.sebetType == type)
+        sebetProducts.splice(prd, 1)
+    }
+    else {
+        let prd2 = sebetProducts.findIndex(item => item.id == id)
+        sebetProducts.splice(prd2, 1)
+    }
+    if (sebetProducts.length == 0) {
+        icon1.style.display = 'block'
+        icon2.style.display = 'block'
+        total.style.display = 'none'
+        orderedProducts.style.display = 'none'
+        orderButton.classList.remove('order_sebet')
+    }
+    showProductSebet()
+}
+function minusSebetQuantity(id, b, size, type) {
+    let prd = sebetProducts.find(item => item.id == id && item.sebetSize == size && item.sebetType == type)
+    if (b == 'pizza' && prd) {
+        if (prd.sebetQuantity > 1) {
+            prd.sebetQuantity--
+        }
+    }
+    else {
+        let prd2 = sebetProducts.find(item => item.id == id)
+        if (prd2.quantity > 1) {
+            prd2.quantity--
+        }
+    }
+    showProductSebet()
+}
+function plusSebetQuantity(id, b, size, type) {
+    let prd = sebetProducts.find(item => item.id == id && item.sebetSize == size && item.sebetType == type)
+    if (b == 'pizza' && prd) {
+        prd.sebetQuantity++
+    }
+    else {
+        let prd2 = sebetProducts.find(item => item.id == id)
+        prd2.quantity++
+    }
+    showProductSebet()
+}
+let totalPrice = document.querySelector('#total span')
+function updateTotal() {
+    let sum = 0
+    sebetProducts.forEach(item => {
+        sum += (item.sebetPrice * item.sebetQuantity) || (item.price * item.quantity)
+    })
+    totalPrice.innerHTML = sum
+}
+/* <div class="ordered_product">
+                            <div>
+                                <h5>Cheddar Çiken Club - Böyük, 35 sm</h5>
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                            <p>Nazik</p>
+                            <div>
+                                <div class="sebet_kol_vo">
+                                    <div><i class="fa-solid fa-minus"></i></div>
+                                    <p>3</p>
+                                    <div><i class="fa-solid fa-plus"></i></div>
+                                </div>
+                                <h4>22.00 azn</h4>
+                            </div>
+                        </div> */

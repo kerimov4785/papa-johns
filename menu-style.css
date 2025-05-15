@@ -246,17 +246,98 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 150px;
+    height: 180px;
     justify-content: center;
     gap: 10px;
     margin: 15px 0;
+    padding: 10px 20px 0px 20px;
 }
 
-#sebet i {
+#sebet .fa-cart-shopping {
     font-size: 70px;
     color: #d8d8d8;
 }
 
+#ordered_products{
+    align-self: start;
+    height: 90%;
+    display: none;
+    gap: 25px;
+    flex-direction: column;
+    width: 100%;
+    overflow-y: scroll;
+}
+.ordered_product{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+.ordered_product > div{
+    display: flex;
+    width: 100%;
+}
+.sebet_kol_vo{
+    display: flex;
+    gap: 5px;
+    font-size: 12px;
+    line-height: 12px;
+    color: var(--green);
+}
+.sebet_kol_vo div{
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 17px;
+    height: 17px;
+    border: 1px solid #2d5d2a69;
+}
+.sebet_kol_vo div:hover{
+    background-color: var(--green);
+    color: white;
+}
+.ordered_product h4{
+    font: 400 13px 'Alfa Slab One';
+    color: #212529;
+}
+.ordered_product > div:first-child{
+    align-items: center;
+    justify-content: space-between;
+}
+.ordered_product > div:last-child{
+    justify-content: end;
+    align-items: center;
+    gap: 50px;
+}
+.ordered_product i{
+    cursor: pointer;
+}
+.ordered_product p{
+    font: 400 14px 'Roboto' !important;
+    color: #212529 !important;
+}
+.sebet_kol_vo p{
+    color: var(--green) !important;
+    font-weight: 600 !important;
+}
+#total{
+    width: 100%;
+    border-top: 1px solid #212529;
+    display: none;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+#total p{
+    font: 600 15px 'Roboto' !important;
+    color: black !important;
+}
+.ordered_product h5{
+    color: #212529;
+    font: 600 16px 'Roboto';
+}
+#total h3{
+    font: 600 15px 'Roboto';
+}
 #sebet p {
     font: 400 14px 'Roboto';
     color: #d8d8d8;
@@ -286,7 +367,12 @@ main {
     letter-spacing: 2px;
     margin-top: 15px;
 }
-
+.order_sebet{
+    background-color: var(--yellow) !important;
+    border: 1px solid black !important;
+    color: black !important; 
+    cursor: pointer; 
+}
 .selected_nav {
     background-color: #000 !important;
     color: white;
@@ -324,7 +410,7 @@ main {
     position: relative;
 }
 
-.fa-xmark {
+.pizza-sebet-box .fa-xmark , .other_sebet_box .fa-xmark {
     position: absolute;
     font-size: 30px;
     top: 10px;
@@ -358,8 +444,11 @@ main {
     border-radius: 40px;
     text-transform: uppercase;
     letter-spacing: 1px;
+    cursor: pointer;
 }
-
+.quantity_panel button:hover{
+    background-color: white;
+}
 .kol_vo {
     display: flex;
     align-items: center;
@@ -580,11 +669,11 @@ main {
     display: flex;
     align-items: center;
 }
-
 @media screen and (max-width: 1100px) {
     .mob {
         display: flex;
         align-items: center;
+        gap:10px
     }
 
     #comp {
