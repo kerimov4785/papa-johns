@@ -693,6 +693,7 @@ main {
     position: absolute;
     top: 18px;
     color: var(--green);
+    display: none;
 }
 @media screen and (max-width: 1100px) {
     .mob {
@@ -719,6 +720,9 @@ main {
         right: -100%;
         transition: 0.5s;
     }
+    .main_col2 i{
+        display: block;
+    }
     .mob_sebet{
         display: flex;
     }
@@ -733,6 +737,9 @@ main {
     }
     .sections{
         justify-content: space-between;
+    }
+    #sebet{
+        height: 310px;
     }
 }
 @media screen and (max-width: 768px) {
